@@ -1,0 +1,98 @@
+<form action="/loginSignUp/signUp" method="post" class="p-3 m-3" >
+    <div class="container">
+        <div class="row">
+
+        <div class="mb-3 col-md-4">
+            <label for="firstName" class="form-label">First Name</label>
+            <input type="text" class="form-control" id="firstName" name="firstName" value="{{values.firstName}}"/>
+            {{#if result.firstName}}
+                <div class="form-text highlight">
+                    {{result.firstName}}
+                </div>
+            {{/if}}
+        </div>
+        
+        <div class="mb-3 col-md-4">
+            <label for="lastName" class="form-label">Last Name</label>
+            <input type="text" class="form-control" id="lastName" value="{{values.lastName}}" name="lastName" />
+            {{#if result.lastName}}
+            <div class="form-text highlight">
+                {{result.lastName}}
+            </div>
+            {{/if}}
+        </div>
+
+        <div class="mb-3 col-md-4">
+            <label for="phoneNumber" class="form-label">Phone Number</label>
+            <div class="input-group">
+                <span class="input-group-text">+1</span>
+                <input type="text" class="form-control" id="phoneNumber" value="{{values.phoneNumber}}" name="phoneNumber">
+            </div>
+            {{#if result.phoneNumber}}
+                <div class="form-text highlight">
+                    {{result.phoneNumber}}
+                </div>
+            {{/if}}
+        </div>
+
+        <div class="mb-3 col-md-6">
+            <label for="email" class="form-label">Email address</label>
+            <input type="email" class="form-control" id="email" aria-describedby="emailHelp" name="email" value="{{values.email}}"/>
+            <div id="emailHelp" class="form-text">
+                We'll never share your email with anyone else.
+            </div>
+            {{#if result.email}}
+            <div class="form-text highlight">
+                {{result.email}}
+            </div>
+            {{/if}}
+        </div>
+
+        <div class="mb-3 col-md-6">
+            <label for="password" class="form-label">Password</label>
+            <input type="password" class="form-control" id="passowrd" name="password" value="{{values.password}}"/>
+            {{#if result.password}}
+            <div class="form-text highlight">
+                {{result.password}}
+            </div>
+            {{/if}}
+        </div>
+
+        <div class="mb-3">
+            <div id="addressHead" class="form-text h4">
+                Full Address
+            </div>
+
+            <label for="address" class="form-label">Street</label>
+            <input type="text" class="form-control" id="address" name="address" value="{{values.street}}"/>
+            {{#if result.address}}
+            <div class="form-text highlight">
+                {{result.address}}
+            </div>
+            {{/if}}
+            
+            <label for="postalCode" class="form-label">Postal Code</label>
+            <input type="text" class="form-control" id="postalCode" name="postalCode" value="{{values.postalCode}}"/>
+            {{#if result.postalCode}}
+            <div class="form-text highlight">
+                {{result.postalCode}}
+            </div>
+            {{/if}}
+            
+            <label for="city" class="form-label">City</label>
+            <input type="text" class="form-control" id="city" name="city" value="{{values.city}}"/>
+            {{#if result.city}}
+            <div class="form-text highlight">
+                {{result.city}}
+            </div>
+            {{/if}}
+        </div>
+
+        
+
+        <div class="col-12">
+            <button type="submit" class="btn btn-primary">Submit</button>
+        </div>
+        </div>
+    </div>
+</form>
