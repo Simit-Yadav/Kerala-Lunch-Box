@@ -10,7 +10,7 @@ dotenv.config({ path: "./config/keys.env" });
 var HTTP_PORT = process.env.PORT || 8080;
 
 // SETTING STATIC FOLDER
-app.use(express.static("static"));
+app.use(express.static("./static"));
 
 // app.use(express.urlencoded({ extended: true }));
 app.use(bodyParser.urlencoded({ extended: false }));
@@ -33,18 +33,6 @@ const loginSignUp = require("./controllers/loginSignup");
 app.use("/loginSignUp", loginSignUp);
 
 // connection of mongodb.
-mongoose
-  .connect(process.env.MongoDb_String, {
-    useNewUrlParser: true,
-    useUnifiedTopology: true,
-    useCreateIndex: true,
-  })
-  .then(() => {
-    console.log("Connected to the MongoDB database.");
-  })
-  .catch((err) => {
-    console.log(`There was a problem connecting to MongoDB ... ${err}`);
-  });
 
 // on server start function.
 function onHttpStart() {
@@ -57,4 +45,19 @@ app.use(function (err, req, res, next) {
   res.status(404).send("Page Not Found");
 });
 
-app.listen(HTTP_PORT, onHttpStart);
+const start = async () => {
+  try {
+    await mongoose.connect(process.env.MongoDb_String, {
+      useNewUrlParser: true,
+      useUnifiedTopology: true,
+      useCreateIndex: true,
+    });
+
+    // making app to listen on  port and startup function.
+    app.listen(HTTP_PORT, onHttpStart);
+  } catch (err) {
+    console.log(`There was a problem connecting to MongoDB ... ${err}`);
+  }
+};
+
+start();

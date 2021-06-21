@@ -1,0 +1,35 @@
+footer {
+  background-color: #73f168;
+  text-align: center;
+  border-top: 2px solid darkgreen;
+  h3 {
+    text-transform: uppercase;
+    margin-top: 1rem;
+    display: inline-block;
+    border-bottom: 2px solid darkgreen;
+  }
+
+  p {
+    text-transform: capitalize;
+    letter-spacing: 1px;
+    margin: 0;
+
+    a {
+      border-bottom: 2px solid #fff;
+    }
+  }
+
+  .info__div {
+    padding: 2rem;
+    @include breakpoint-up(medium) {
+      display: flex;
+      justify-content: space-around;
+    }
+  }
+
+  .copy__right {
+    border-top: 1px solid darkgreen;
+
+    background-color: #f5fffa;
+  }
+}

@@ -2,6 +2,7 @@ const bcrypt = require("bcryptjs");
 const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
 
+// user schema
 const userSchema = new Schema({
   firstName: {
     type: String,
@@ -37,6 +38,7 @@ const userSchema = new Schema({
   },
 });
 
+// encrypting password before saving to database.
 userSchema.pre("save", function (next) {
   var user = this;
 
@@ -59,6 +61,7 @@ userSchema.pre("save", function (next) {
     });
 });
 
+// creating a usermodel.
 const userModel = mongoose.model("Users", userSchema);
 
 module.exports = userModel;

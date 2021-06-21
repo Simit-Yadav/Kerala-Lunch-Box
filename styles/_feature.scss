@@ -1,0 +1,68 @@
+.feature {
+  background-color: #f5fffa;
+  padding: 2.5rem;
+
+  &__header {
+    margin-bottom: 3rem;
+    text-align: center;
+    text-transform: uppercase;
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    font-size: clamp(1.5rem, calc(5vw + 1rem), 4rem);
+
+    &__line {
+      height: 5px;
+      text-align: center;
+      background-color: #73f168;
+      width: 100%;
+
+      @include breakpoint-up(medium) {
+        width: 70%;
+      }
+    }
+  }
+
+  &__container {
+    padding: 1.2rem;
+
+    @include breakpoint-up(medium) {
+      display: flex;
+      flex-wrap: wrap;
+    }
+  }
+
+  &__item {
+    margin-bottom: 1.5em;
+    text-align: center;
+
+    @include breakpoint-up(medium) {
+      flex: 0 0 50%;
+
+      @include breakpoint-up(large) {
+        flex: 1;
+      }
+    }
+  }
+
+  &__image {
+    img {
+      width: 50%;
+    }
+  }
+
+  &__title {
+    margin: 0.5rem 0rem;
+    font-weight: 600;
+    font-size: 1.7rem;
+  }
+
+  &__description {
+    font-size: 1.2rem;
+    color: #8d8896;
+
+    @include breakpoint-up(medium) {
+      padding: 0 1rem;
+    }
+  }
+}

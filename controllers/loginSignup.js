@@ -3,14 +3,19 @@ const userModel = require("../models/user");
 const router = express.Router();
 const bcrypt = require("bcryptjs");
 
+// get signup route
 router.get("/signUp", (req, res) => {
+  // rendering signUp page.
   res.render("loginSignUp/signUp");
 });
 
+// get login route
 router.get("/login", (req, res) => {
+  // rendering login page.
   res.render("loginSignUp/login");
 });
 
+// post login route
 router.post("/login", (req, res) => {
   console.log(req.body);
 
@@ -19,24 +24,30 @@ router.post("/login", (req, res) => {
 
   const { email, password } = req.body;
 
+  // server side validation of email.
   if (email.length === 0) {
     valid = false;
     results.email = "Enter a email!";
   }
 
+  // server side validation of password
   if (password.length === 0) {
     valid = false;
     results.password = "Enter a password!";
   }
 
+  // checking email and password into database.
+  // if validation failed
   if (!valid) {
     res.render("loginSignup/login", {
       values: req.body,
       results: results,
     });
   } else {
+    // validation successful
     console.log("Successfully Logged In.");
 
+    // checking email and password in database.
     userModel
       .findOne({
         email: email,
@@ -74,6 +85,7 @@ router.post("/login", (req, res) => {
   }
 });
 
+// post route on signup
 router.post("/signUp", (req, res) => {
   console.log(req.body);
 
@@ -91,6 +103,7 @@ router.post("/signUp", (req, res) => {
     phoneNumber,
   } = req.body;
 
+  // server side validation of first name.
   if (typeof firstName !== "string" || firstName.length === 0) {
     valid = false;
     results.firstName = "Enter a First Name!";
@@ -99,6 +112,7 @@ router.post("/signUp", (req, res) => {
     results.firstName = "Enter a valid First Name!";
   }
 
+  // server side validation of last name.
   if (typeof lastName !== "string" || lastName.length === 0) {
     valid = false;
     results.lastName = "Enter a Last Name!";
@@ -107,6 +121,7 @@ router.post("/signUp", (req, res) => {
     results.lastName = "Enter a valid Last Name!";
   }
 
+  // server side validation of email.
   let emailReg = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,6}$/;
   if (email.length < 2) {
     valid = false;
@@ -116,28 +131,32 @@ router.post("/signUp", (req, res) => {
     results.email = "Entear a valid email!";
   }
 
+  // // server side validation of password
   let passwordReg = /^(?=.*\d)(?=.*[!@#$%^&*])(?=.*[a-z])(?=.*[A-Z]).{6,12}$/;
   if (passwordReg.test(password) == false) {
     valid = false;
     results.password = "Enter a password properly.";
   }
 
+  // // server side validation of phonenumber
   if (phoneNumber.length < 10 || phoneNumber.length > 10) {
     valid = false;
     results.phoneNumber = "Enter a valid Phone Number.";
   }
-  console.log(phoneNumber.length);
 
+  // // server side validation of address
   if (address.length < 5) {
     valid = false;
     results.street = "Enter a Valid Street Address.";
   }
 
+  // // server side validation of postalcode.
   if (postalCode.length > 6 || postalCode.length < 6) {
     valid = false;
     results.postalCode = "Enter a valid postal code.";
   }
 
+  // // server side validation of city.
   if (typeof city !== "string" || city.length === 0) {
     valid = false;
     results.city = "Enter a valid city.";
@@ -146,12 +165,14 @@ router.post("/signUp", (req, res) => {
     results.city = "Enter a valid city.";
   }
 
+  // if validation failed
   if (!valid) {
     res.render("loginSignUp/signUp", {
       result: results,
       values: req.body,
     });
   } else {
+    // validation successful than
     const user = new userModel({
       firstName: firstName,
       lastName: lastName,
@@ -163,6 +184,7 @@ router.post("/signUp", (req, res) => {
       city: city,
     });
 
+    // saving to database.
     user
       .save()
       .then((userSaved) => {

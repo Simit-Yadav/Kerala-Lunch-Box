@@ -1,0 +1,141 @@
+.process {
+  padding: 2.5rem;
+  text-align: center;
+  background-color: #f5fffa;
+  h1 {
+    color: #1b1b1e;
+  }
+
+  p {
+    color: #8d8896;
+  }
+
+  &__header {
+    margin-bottom: 3rem;
+    text-align: center;
+    text-transform: uppercase;
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    font-size: clamp(1.5rem, calc(5vw + 1rem), 4rem);
+
+    &__line {
+      height: 5px;
+      text-align: center;
+      background-color: #73f168;
+      width: 100%;
+
+      @include breakpoint-up(medium) {
+        width: 70%;
+      }
+    }
+  }
+
+  &__container {
+    .image__div {
+      //   position: relative;
+      //   background: transparent;
+      display: none;
+      img {
+        width: 100%;
+      }
+
+      @include breakpoint-up(medium) {
+        display: block;
+        order: 2;
+      }
+    }
+    @include breakpoint-up(large) {
+      padding: 0 2.5rem;
+    }
+  }
+
+  &__work {
+    @include breakpoint-up(medium) {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+  }
+
+  &__description {
+    @include breakpoint-up(medium) {
+      width: 80%;
+    }
+  }
+
+  &__div {
+    margin-bottom: 1.5rem;
+
+    h1 {
+      display: inline-block;
+      border-radius: 50%;
+      font-size: 1.6rem;
+      padding: 0.6rem 1.1rem;
+      margin-bottom: 0.8rem;
+      background-color: #73f168;
+    }
+
+    h3 {
+      font-weight: 700;
+      margin-bottom: 0.7rem;
+      text-transform: capitalize;
+    }
+
+    p {
+      padding: 0 0.8rem 0.5rem 0.8rem;
+      margin: 0;
+    }
+
+    // @include breakpoint-up(medium) {
+    //   width: 85%;
+    // }
+
+    // @include breakpoint-up(large) {
+    //   width: 70%;
+    // }
+  }
+
+  &__start {
+    &__description {
+      @include breakpoint-up(medium) {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        align-items: center;
+      }
+    }
+
+    &__div {
+      margin-bottom: 1.5rem;
+
+      h1 {
+        display: inline-block;
+        border-radius: 50%;
+        font-size: 1.6rem;
+        padding: 0.6rem 1.1rem;
+        margin-bottom: 0.8rem;
+        background-color: #73f168;
+      }
+
+      h3 {
+        font-weight: 700;
+        margin-bottom: 0.7rem;
+        text-transform: capitalize;
+      }
+
+      p {
+        padding: 0 0.8rem 0.5rem 0.8rem;
+        margin: 0;
+      }
+
+      @include breakpoint-up(medium) {
+        flex: 0 0 50%;
+      }
+
+      @include breakpoint-up(large) {
+        flex: 1;
+      }
+    }
+  }
+}
